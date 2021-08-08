@@ -6,9 +6,9 @@
     <body>
 
     <nav class="navbar navbar-default bg-dark text-dark">
-    <div class="navbar-header">
+    <div class="navbar-header" style="float: left">
         <img src="static/socrates.jfif" alt="socrates" style="width:100px;height:100px;">
-      <h1>Socrates</h1>
+      <div style="float: right"><h3>User Signup Portal</h3></div>
     </div>
 </nav>
 
@@ -24,7 +24,7 @@
     </div>
     {%endif%}
 
-    <div class="container">
+    <div class="container" id="signup-box">
     <form class="form-horizontal" action="/" method="post">
   <div class="form-group">
     <label>Username</label>
@@ -34,9 +34,10 @@
     <label>Password</label>
     <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
   </div>
-        <input type="submit" class="btn btn-primary" />
+        <input type="submit" class="btn btn-primary" onclick="toggleView()" />
 </form>
     </div>
+
 
 
 </body>

@@ -7,7 +7,8 @@ def create_table():
     cur.execute("CREATE TABLE IF NOT EXISTS users("
                 "id integer primary key autoincrement,"
                 "username text not null,"
-                "password text not null)")
+                "password text not null,"
+                "isLoggedIn boolean not null)")
     con.commit()
     con.close()
 
@@ -28,3 +29,4 @@ def fetch_user(username):
     print(users)
     con.close()
     return users
+
