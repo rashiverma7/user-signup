@@ -5,23 +5,18 @@
 </head>
     <body>
 
-    <nav class="navbar navbar-default bg-primary text-white">
-  <div class="container-fluid">
+    <nav class="navbar navbar-default bg-dark text-dark">
     <div class="navbar-header">
-      <a class="navbar-brand" >Socrates</a>
+        <img src="static/socrates.jfif" alt="socrates" style="width:100px;height:100px;">
+      <h1>Socrates</h1>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
-  </div>
 </nav>
 
-    
+
      {%if user_flag%}
     <p>{{message}}</p>
     {%else%}
-    <div class="jumbotron">
+    <div class="container">
       {%for user in users%}
         <p>Welcome {{user[0]}}!</p>
         <p>Your password is {{user[1]}}</p>
@@ -29,15 +24,19 @@
     </div>
     {%endif%}
 
-    	<div class="container">
-  			<form class="form-horizontal" action="/" method="post">
-    			<input type="text" name="username" id="username" placeholder="Username" required/>
-    			<br>
-    			<input type="password" name="password" id="password" placeholder="Password" required/>
-    			<br>
-    			<input type="submit" class="btn-info bg-info" value="Sign Up"/>
-  			</form>
-		</div>
+    <div class="container">
+    <form class="form-horizontal" action="/" method="post">
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+  </div>
+        <input type="submit" class="btn btn-primary" />
+</form>
+    </div>
 
 
 </body>
