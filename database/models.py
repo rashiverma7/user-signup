@@ -1,5 +1,6 @@
 import sqlite3 as sql
 
+
 def create_table():
     con = sql.connect("usersinfo.db")
     cur = con.cursor()
@@ -19,12 +20,11 @@ def insert_user(username, password):
     con.close()
 
 
-def fetch_user():
+def fetch_user(username):
     con = sql.connect("usersinfo.db")
     cur = con.cursor()
-    cur.execute("SELECT username, password FROM users")
+    cur.execute("SELECT username, password FROM users where username = '%s'" % username)
     users = cur.fetchall()
+    print(users)
     con.close()
     return users
-
-

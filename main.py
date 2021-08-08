@@ -1,7 +1,6 @@
 from flask import Flask
-from flask import render_template
-from flask import request
-import database.models as db_handler
+from flask import request, render_template
+import database.models as db_connect
 
 app = Flask(__name__)
 
@@ -10,14 +9,11 @@ app = Flask(__name__)
 def home():
     if request.method == 'POST':
         username = request.form['username']
-        print(username)
         password = request.form['password']
-        print(password)
-        db_handler.create_table()
-        db_handler.insert_user(username, password)
-        users = db_handler.fetch_user()
-        print(users)
-        return render_template('index.html', users=users)
+        db_connect.create_table()
+        db_connect.insert_user(username, password)
+        current_user = db_connect.fetch_user(username)
+        return render_template('index.html', users=current_user)
     else:
         return render_template('index.html')
 
