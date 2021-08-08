@@ -1,19 +1,16 @@
 from flask import Flask
 from flask import request, render_template
-import database.models as db_connect
+from signup import new_user_signup
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=['POST', 'GET'])
-def home():
+def signup():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        db_connect.create_table()
-        db_connect.insert_user(username, password)
-        current_user = db_connect.fetch_user(username)
-        return render_template('index.html', users=current_user)
+        user_list, message, is_user_exists = new_user_signup(request)
+        return render_template('index.html', users=user_list,
+                               message=message, user_flag=is_user_exists)
     else:
         return render_template('index.html')
 
